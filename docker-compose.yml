@@ -1,8 +1,15 @@
 version: "3.6"
 
 services:
-  # Build: docker-compose build -d bigchaindb
-  # Run: docker-compose run -d bdb
+  server:
+    build:
+      context: .
+      args:
+        app_env: development
+    volumes:
+      - .:/app
+    ports:
+      - "8080:8080"
   mongodb:
     image: mongo:3.6
     ports:
